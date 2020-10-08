@@ -1,0 +1,18 @@
+{
+  "name": "@MichaelDrogalis/storybook",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "npx rollup -c --watch",
+    "build": "NODE_ENV=production npx rollup -c"
+  },
+  "dependencies": {
+    "@michaeldrogalis/specimen": "0.0.7",
+    "reveal.js": "4.0.2",
+    "tailwindcss": "1.8.11"
+  },
+  "devDependencies": {
+    "rollup": "^2.22.1",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-commonjs": "^15.1.0"
+  }
+}

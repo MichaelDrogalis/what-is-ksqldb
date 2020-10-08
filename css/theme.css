@@ -1,0 +1,54 @@
+body {
+    font-family: MarkOT,Arial,sans-serif;
+}
+
+.animation {
+    display: block;
+    margin: auto;
+}
+
+.pq {
+    stroke: #b5b5b5;
+    stroke-width: 1;
+    fill: none;
+}
+
+.pq-connector {
+    stroke: #b5b5b5;
+    stroke-dasharray: 4;
+}
+
+.stream-connector {
+    stroke: #b5b5b5;
+}
+
+.row-transformed {
+    fill: #a96bff;
+}
+
+.row.discard {
+    fill: #ff9c6b;
+}
+
+.partition {
+    stroke: #000000;
+    stroke-width: 1;
+    fill: none;
+}
+
+.code {
+    font-family: monospace;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 3px;
+}
+
+.pq-code-container {
+    margin-top: 40px;
+}
+
+.specimen-controls button {
+    margin-right: 5px;
+}

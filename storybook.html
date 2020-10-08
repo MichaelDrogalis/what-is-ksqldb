@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>What is ksqlDB?</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+
+    <link rel="stylesheet" href="node_modules/tailwindcss/dist/tailwind.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/github.css">
+
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	    <section class="center">
+          <div class="container">
+            <img src="assets/img/img-rocket.svg" class="m-auto w-32"/>
+            <p class="text-6xl mt-8">Hello, ksqlDB.</p>
+          </div>
+        </section>
+        <section>
+          <section class="center">
+            <p class="text-6xl">What problem does it solve?</p>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">Traditional stream processing architectures are complex, to say the least.</p>
+            <img src="assets/img/traditional-components.svg" class="mt-16"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">These architectures resemble a big, clunky ETL pipeline.</p>
+            <img src="assets/img/traditional-overlay.svg" class="mt-16"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">ksqlDB consolidates this complex with one abstraction.</p>
+            <img src="assets/img/ksqldb-world.svg"/ class="mt-16">
+          </section>
+        </section>
+
+        <section>
+          <section class="center">
+            <p class="text-6xl">What can I build with it?</p>
+
+            <div class="m-auto mt-20">
+              <img src="assets/img/materialized-view.svg"/ class="w-20 inline-block">
+              <img src="assets/img/streaming-etl.svg"/ class="w-20 inline-block ml-20">
+              <img src="assets/img/microservices.svg"/ class="w-20 inline-block ml-20">
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/materialized-view.svg"/ class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Materialized cache</p>
+                <p class="mt-5">Build and serve incrementally updated stateful views.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/streaming-etl.svg"/ class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Streaming ETL pipeline</p>
+                <p class="mt-5">Manipulate in-flight data to connect arbitrary sources and sinks.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/microservices.svg"/ class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Event-driven microservices</p>
+                <p class="mt-5">Trigger changes based on observed patterns of events in a stream.</p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section class="center">
+            <p class="text-6xl">Let's start with the basics.</p>
+          </section>
+
+          <section data-name="stream">
+            <p class="text-5xl">Declaring a stream</p>
+            <div class="mt-10" id="stream"></div>
+          </section>
+
+          <section data-name="inserts">
+            <div class="container mx-auto">
+              <p class="text-5xl">Inserting rows</p>
+              <div class="mt-10" id="inserts"></div>
+            </div>
+          </section>
+
+          <section data-name="transformation">
+            <div class="container mx-auto">
+              <p class="text-5xl">Transforming a stream</p>
+              <div class="mt-10" id="transformation"></div>
+            </div>
+          </section>
+
+          <section data-name="filtering">
+            <p class="text-5xl">Filtering rows out of a stream</p>
+            <div class="mt-10" id="filtering"></div>
+          </section>
+
+          <section data-name="compressed">
+            <p class="text-5xl">Combining many operations into one</p>
+            <div class="mt-10" id="compressed"></div>
+          </section>
+
+          <section data-name="rekeying">
+            <p class="text-5xl">Rekeying a stream</p>
+            <div class="mt-10" id="rekeying"></div>
+          </section>
+
+          <section data-name="multi-consumer">
+            <p class="text-5xl">Processing with multiple consumers</p>
+            <div class="mt-10" id="multi-consumer"></div>
+          </section>
+        </section>
+
+        <section>
+          <section class="center">
+            <p class="text-6xl">Real-time materialized views</p>
+          </section>
+
+          <section data-name="materialized-view">
+            <p class="text-5xl">Materializing a view from a stream</p>
+            <div class="mt-10" id="materialized-view"></div>
+          </section>
+
+          <section data-name="repartitioning">
+            <p class="text-5xl">Automatic repartitioning</p>
+            <div class="mt-10" id="repartitioning"></div>
+          </section>
+
+          <section data-name="replaying-from-changelog">
+            <p class="text-5xl">Replaying from changelogs</p>
+            <div class="mt-10" id="replaying-from-changelog"></div>
+          </section>
+
+          <section data-name="replaying-from-compacted">
+            <p class="text-5xl">Replaying from a compacted topic</p>
+            <div class="mt-10" id="replaying-from-compacted"></div>
+          </section>
+
+          <section data-name="latest">
+            <p class="text-5xl">Materializing the latest values</p>
+            <div class="mt-10" id="latest"></div>
+          </section>
+
+          <section data-name="chained">
+            <p class="text-5xl">Chaining materialized views</p>
+            <div class="mt-10" id="chained"></div>
+          </section>
+        </section>
+
+        <section class="center">
+          <p class="text-6xl">Fin</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="build/bundle.js"></script>
+  </body>
+</html>

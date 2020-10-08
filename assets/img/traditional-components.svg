@@ -1,0 +1,56 @@
+<svg id="_1" data-name="1" xmlns="http://www.w3.org/2000/svg" viewBox="75 0 860 247"><defs><style>.cls1-1,.cls1-10,.cls1-11,.cls1-12,.cls1-2,.cls1-4,.cls1-7,.cls1-8,.cls1-9{fill:none;}
+.cls1-1,.cls1-2,.cls1-3{stroke:#6a6a6e;}
+.cls1-1,.cls1-10,.cls1-11,.cls1-12,.cls1-2,.cls1-3,.cls1-7,.cls1-8,.cls1-9{stroke-linecap:round;stroke-linejoin:round;}
+.cls1-1,.cls1-7,.cls1-8,.cls1-9{stroke-width:2px;}
+.cls1-13,.cls1-3{fill:#ffffff;}
+.cls1-3{stroke-width:0.77px;}
+.cls1-4{stroke:#ccc;stroke-width:4px;}
+.cls1-13,.cls1-4{stroke-miterlimit:10;}
+.cls1-5{fill:#6a6a6e;}
+.cls1-6{font-size:9.04px;font-family:MarkOT-Medium, Mark OT;font-weight:500;}
+.cls1-10,.cls1-11,.cls1-12,.cls1-7,.cls1-8,.cls1-9{stroke:#6a6a6e;}
+.cls1-11,.cls1-8{stroke-dasharray:25.64 5.13;}
+.cls1-12,.cls1-9{stroke-dasharray:5.13 0 25.64 5.13;}
+.cls1-10,.cls1-11,.cls1-12{stroke-width:2.06px;}
+.cls1-13{stroke:#6a6a6e;stroke-width:1.29px;}
+.cls1-14{letter-spacing:-0.01em;}
+.cls1-15{letter-spacing:-0.01em;}
+.cls1-16{letter-spacing:0em;}
+.cls1-17{fill:#6a6a6e;}
+.kafka {fill: #6a6a6e;}
+</style></defs><title>streaming DB</title><rect class="cls1-1" x="86" y="133.48" width="40.66" height="40.66" rx="6.63"/><rect class="cls1-2" x="90.66" y="138.14" width="31.34" height="31.34" rx="5.11"/><rect class="cls1-3" x="90.66" y="193.14" width="31.34" height="31.34" rx="5.11"/><polyline class="cls1-4" points="404 205.5 622 205.5 622 116.5 751.95 116.5"/><polygon class="cls1-5" points="749.91 123.48 762 116.5 749.91 109.52 749.91 123.48"/><text class="cls1-6" transform="translate(99.96 41.43)">DB</text><text class="cls1-6" transform="translate(97.4 157.43)">APP</text><text class="cls1-6" transform="translate(97.4 212.29)">APP</text><rect class="cls1-1" x="86" y="188.34" width="40.66" height="40.66" rx="6.63"/><rect class="cls1-3" x="883.66" y="101.14" width="31.34" height="31.34" rx="5.11"/><text class="cls1-6" transform="translate(890.4 120.29)">APP</text><rect class="cls1-1" x="879" y="96.34" width="40.66" height="40.66" rx="6.63"/><path class="cls1-7" d="M125.48,19.94c0-2.66-8.77-4.81-19.59-4.81s-19.58,2.15-19.58,4.81V49.49h0c0,2.66,8.77,4.81,19.58,4.81s19.59-2.15,19.59-4.81h0Z"/><path class="cls1-7" d="M86.31,19.94c0-.71.62-1.38,1.73-2"/>
+<path class="cls1-8" d="M88,18c3.07-1.67,9.91-2.83,17.85-2.83a70.65,70.65,0,0,1,9,.54"/>
+<path class="cls1-9" d="M118.39,16.24c4.33.88,7.09,2.21,7.09,3.7,0,2.65-8.77,4.81-19.59,4.81-1.36,0-2.7,0-4-.1"/>
+<path class="cls1-7" d="M99.35,24.47c-.94-.08-1.85-.18-2.73-.29"/>
+<text class="cls1-6" transform="translate(783.96 123.43)">DB</text><path class="cls1-10" d="M809.48,101.94c0-2.66-8.77-4.81-19.59-4.81s-19.58,2.15-19.58,4.81v29.55h0c0,2.66,8.77,4.81,19.58,4.81s19.59-2.15,19.59-4.81h0Z"/>
+<path class="cls1-10" d="M770.31,101.94c0-.71.62-1.38,1.73-2"/>
+<path class="cls1-11" d="M772,100c3.07-1.67,9.91-2.83,17.85-2.83a70.65,70.65,0,0,1,9,.54"/>
+<path class="cls1-12" d="M802.39,98.24c4.33.88,7.09,2.21,7.09,3.7,0,2.65-8.77,4.81-19.59,4.81-1.36,0-2.7,0-4-.1"/>
+<path class="cls1-10" d="M783.35,106.47c-.94-.08-1.85-.18-2.73-.29"/>
+<text class="cls1-6" transform="translate(99.96 96.41)">DB</text><path class="cls1-7" d="M125.48,74.92c0-2.66-8.77-4.81-19.59-4.81s-19.58,2.15-19.58,4.81v29.55h0c0,2.65,8.77,4.81,19.58,4.81s19.59-2.16,19.59-4.81h0Z"/>
+<path class="cls1-7" d="M86.31,74.92c0-.71.62-1.38,1.73-2"/>
+<path class="cls1-8" d="M88,72.94c3.07-1.67,9.91-2.83,17.85-2.83a72.64,72.64,0,0,1,9,.53"/>
+<path class="cls1-9" d="M118.39,71.22c4.33.88,7.09,2.21,7.09,3.7,0,2.65-8.77,4.81-19.59,4.81-1.36,0-2.7,0-4-.1"/>
+<path class="cls1-7" d="M99.35,79.45q-1.41-.12-2.73-.3"/>
+<line class="cls1-4" x1="139.89" y1="34.41" x2="277" y2="34.41"/>
+<polygon class="cls1-5" points="274.96 41.39 287.05 34.41 274.96 27.43 274.96 41.39"/>
+<rect class="cls1-13" x="174.1" y="22.4" width="72.29" height="24.66" rx="5.53"/>
+<text class="cls1-6" transform="translate(180 38.2)">CONNECTOR</text><rect class="cls1-13" x="650.1" y="104.4" width="72.29" height="24.66" rx="5.53"/>
+<text class="cls1-6" transform="translate(656 120.2)">CONNECTOR</text><line class="cls1-4" x1="139.89" y1="89.91" x2="277" y2="89.91"/>
+<polygon class="cls1-5" points="274.96 96.89 287.05 89.91 274.96 82.93 274.96 96.89"/>
+<line class="cls1-4" x1="408.94" y1="103.91" x2="446" y2="103.91"/>
+<polygon class="cls1-5" points="410.98 110.89 398.89 103.91 410.98 96.93 410.98 110.89"/>
+<polygon class="cls1-5" points="443.96 110.89 456.05 103.91 443.96 96.93 443.96 110.89"/>
+<line class="cls1-4" x1="408.94" y1="133.91" x2="446" y2="133.91"/>
+<polygon class="cls1-5" points="410.98 140.9 398.89 133.91 410.98 126.93 410.98 140.9"/>
+<polygon class="cls1-5" points="443.96 140.9 456.05 133.91 443.96 126.93 443.96 140.9"/>
+<line class="cls1-4" x1="139.89" y1="153.16" x2="277" y2="153.16"/>
+<polygon class="cls1-5" points="274.96 160.15 287.05 153.16 274.96 146.18 274.96 160.15"/>
+<line class="cls1-4" x1="817.5" y1="116" x2="859" y2="116.13"/>
+<polygon class="cls1-5" points="856.93 123.11 869.04 116.16 856.98 109.14 856.93 123.11"/>
+<line class="cls1-4" x1="139.89" y1="208.67" x2="277" y2="208.67"/>
+<polygon class="cls1-5" points="274.96 215.65 287.05 208.67 274.96 201.69 274.96 215.65"/>
+<rect class="cls1-13" x="174.1" y="77.91" width="72.29" height="24.66" rx="5.53"/>
+<text class="cls1-6" transform="translate(180 93.71)">CONNECTOR</text><text class="cls1-6" transform="translate(528.06 100.71)">STREAM<tspan x="-9.54" y="10.84">PROCESSING</tspan></text><path class="kafka" d="M369,127.8a18.46,18.46,0,0,0-14.2,6.66l-8.34-4.82a23.23,23.23,0,0,0-.4-17l8.73-5a18.44,18.44,0,1,0-3.34-6l-9,5.18a23.21,23.21,0,0,0-13.91-8V88.07a18.5,18.5,0,1,0-6.86.16V98.7a23.17,23.17,0,0,0,0,46v9.24a18.48,18.48,0,1,0,6.86.16v-9.53a23.17,23.17,0,0,0,14.6-8.86l8.3,4.79A18.49,18.49,0,1,0,369,127.8Zm-8.79-31.92a8.87,8.87,0,1,1,8.86,8.87A8.87,8.87,0,0,1,360.22,95.88ZM333.62,172a8.87,8.87,0,1,1-8.87-8.87A8.88,8.88,0,0,1,333.62,172ZM315.88,70.22a8.87,8.87,0,1,1,8.87,8.86A8.88,8.88,0,0,1,315.88,70.22Zm8.87,63.23a11.9,11.9,0,1,1,11.9-11.9A11.92,11.92,0,0,1,324.75,133.45ZM378,146.28a8.87,8.87,0,1,1-8.87-8.86A8.88,8.88,0,0,1,378,146.28Z"/>
+<path class="cls1-17" d="M546.08,160.54A56.54,56.54,0,1,1,592.63,72l-4.3,3.14,12.17,5.39-1.42-13.24-3.64,2.65a60,60,0,1,0,4.31,60.93l-3.11-1.55A56.59,56.59,0,0,1,546.08,160.54Z"/>
+</svg>
