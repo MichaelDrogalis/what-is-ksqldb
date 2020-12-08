@@ -51,16 +51,27 @@
             <p class="text-6xl">What can I build with it?</p>
 
             <div class="m-auto mt-20">
-              <img src="assets/img/materialized-view.svg"/ class="w-20 inline-block">
-              <img src="assets/img/streaming-etl.svg"/ class="w-20 inline-block ml-20">
-              <img src="assets/img/microservices.svg"/ class="w-20 inline-block ml-20">
+              <div class="inline-block">
+                <img src="assets/img/materialized-view.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Materialized cache</p>
+              </div>
+
+              <div class="inline-block ml-20">
+                <img src="assets/img/streaming-etl.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Streaming ETL pipeline</p>
+              </div>
+
+              <div class="inline-block ml-20">
+                <img src="assets/img/microservices.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Event-driven microservice</p>
+              </div>
             </div>
           </section>
 
           <section class="center">
             <div class="grid grid-cols-6 gap-4">
               <div class="col-start-2 col-span-2 m-auto">
-                <img src="assets/img/materialized-view.svg"/ class="w-40">
+                <img src="assets/img/materialized-view.svg" class="w-40">
               </div>
               <div class="col-start-4 col-span-2 m-auto">
                 <p class="text-3xl">Materialized cache</p>
@@ -70,9 +81,21 @@
           </section>
 
           <section class="center">
+            <p class="text-5xl">Materialized cache, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">Chain many distributed systems together.</p>
+            <img src="assets/img/mv-hard.png" class="m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Materialized cache, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">Run just two systems. One for compute, and one for storage.</p>
+            <img src="assets/img/mv-easy.png" class="w-3/5 m-auto mt-20">
+          </section>
+          
+          <section class="center">
             <div class="grid grid-cols-6 gap-4">
               <div class="col-start-2 col-span-2 m-auto">
-                <img src="assets/img/streaming-etl.svg"/ class="w-40">
+                <img src="assets/img/streaming-etl.svg" class="w-40">
               </div>
               <div class="col-start-4 col-span-2 m-auto">
                 <p class="text-3xl">Streaming ETL pipeline</p>
@@ -82,15 +105,39 @@
           </section>
 
           <section class="center">
+            <p class="text-5xl">Streaming ETL pipeline, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">Coordinate many disparate systems.</p>
+            <img src="assets/img/etl-hard.png" class="w-4/5 m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Streaming ETL pipeline, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">A slender architecture for managing the end-to-end flow of your data pipeline.</p>
+            <img src="assets/img/etl-easy.png" class="w-3/5 m-auto mt-20">
+          </section>
+
+          <section class="center">
             <div class="grid grid-cols-6 gap-4">
               <div class="col-start-2 col-span-2 m-auto">
-                <img src="assets/img/microservices.svg"/ class="w-40">
+                <img src="assets/img/microservices.svg" class="w-40">
               </div>
               <div class="col-start-4 col-span-2 m-auto">
                 <p class="text-3xl">Event-driven microservices</p>
                 <p class="mt-5">Trigger changes based on observed patterns of events in a stream.</p>
               </div>
             </div>
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Event-driven microservice, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">It's up to you to blend your stream processing, state, and side-effects logic in a maintainable way.</p>
+            <img src="assets/img/microservice-hard.png" class="m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Event-driven microservice, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">Isolate complex stateful operations within ksqlDB’s runtime. Your app stays simple because it is stateless.</p>
+            <img src="assets/img/microservice-easy.png" class="w-3/5 m-auto mt-20">
           </section>
         </section>
 
