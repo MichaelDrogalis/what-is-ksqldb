@@ -1,54 +1,88 @@
 body {
-    font-family: MarkOT,Arial,sans-serif;
+  font-family: MarkOT, Arial, sans-serif;
 }
 
 .animation {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 .pq {
-    stroke: #b5b5b5;
-    stroke-width: 1;
-    fill: none;
+  stroke: #b5b5b5;
+  stroke-width: 1;
+  fill: none;
 }
 
 .pq-connector {
-    stroke: #b5b5b5;
-    stroke-dasharray: 4;
+  stroke: #b5b5b5;
+  stroke-dasharray: 4;
 }
 
 .stream-connector {
-    stroke: #b5b5b5;
+  stroke: #b5b5b5;
 }
 
 .row-transformed {
-    fill: #a96bff;
+  fill: #a96bff;
 }
 
 .row.discard {
-    fill: #ff9c6b;
+  fill: #ff9c6b;
 }
 
 .partition {
-    stroke: #000000;
-    stroke-width: 1;
-    fill: none;
+  stroke: #000000;
+  stroke-width: 1;
+  fill: none;
 }
 
 .code {
-    font-family: monospace;
+  font-family: monospace;
 }
 
 code {
-    background-color: #f0f0f0;
-    padding: 3px;
+  background-color: #f0f0f0;
+  padding: 3px;
 }
 
 .pq-code-container {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .specimen-controls button {
-    margin-right: 5px;
+  margin-right: 5px;
+}
+
+.specimen .stream-label text,
+.specimen .partition-container text,
+.specimen .persistent-query-container text {
+  fill: #fff;
+}
+
+.specimen .pq-code-container,
+.specimen .pq-connector {
+  display: none;
+}
+
+.specimen .specimen-controls {
+  display: none;
+}
+
+.specimen .persistent-query-container rect {
+  stroke: rgba(32, 230, 221, 1);
+  stroke-width: 8px;
+}
+
+.specimen .external-objects {
+  color: #000;
+  text-align: left;
+}
+
+.reveal-viewport {
+  background-color: rgb(29, 29, 29);
+  color: #fff;
+}
+
+.reveal aside.controls {
+  color: #fff;
 }

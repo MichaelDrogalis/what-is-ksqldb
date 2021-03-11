@@ -1,10 +1,11 @@
 import { Specimen } from '@michaeldrogalis/specimen/dist/specimen';
+import { baseStyles, flavors } from './common';
 
-const flavors = [
-  "#0074A2",
-  "#F26135",
-  "#FFC40C"
-];
+// const flavors = [
+//   "#0074A2",
+//   "#F26135",
+//   "#FFC40C"
+// ];
 
 const input_partitions = [
   [
@@ -32,6 +33,7 @@ const input_partitions = [
 
 export function stream(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
     svg_height: 275,
 
@@ -72,6 +74,7 @@ export function stream(container) {
 
 export function inserts(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
     svg_height: 275,
 
@@ -108,12 +111,13 @@ export function inserts(container) {
 
 export function transformation(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
     svg_height: 325,
 
     pq_width: 150,
     pq_height: 150,
-    pq_margin_top: 50,
+    pq_margin_top: 0,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -163,6 +167,7 @@ export function transformation(container) {
     },
     style: {
       fill: function(before_row, after_row) {
+        console.log(flavors[before_row.value.location.hashCode() % flavors.length]);
         return flavors[before_row.value.location.hashCode() % flavors.length];
       }
     }
@@ -183,12 +188,13 @@ export function transformation(container) {
 
 export function filtering(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
-    svg_height: 220,
+    svg_height: 230,
 
     pq_width: 75,
     pq_height: 75,
-    pq_margin_top: 50,
+    pq_margin_top: 0,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -294,16 +300,17 @@ export function filtering(container) {
 
 export function compressed(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
-    svg_height: 220,
+    svg_height: 230,
 
-    pq_width: 75,
-    pq_height: 75,
-    pq_margin_top: 50,
+    pq_width: 100,
+    pq_height: 100,
+    pq_margin_top: 0,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
-    part_width: 100,
+    part_width: 150,
     part_height: 25,
     part_margin_bottom: 30,
     part_id_margin_left: -15,
@@ -373,6 +380,7 @@ export function compressed(container) {
 
 export function rekeying(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
     svg_height: 220,
 
@@ -488,14 +496,17 @@ export function rekeying(container) {
 
 export function consumers(container) {
   const styles = {
+    ...baseStyles,
     svg_width: 750,
     svg_height: 675,
 
     pq_width: 75,
     pq_height: 75,
-    pq_margin_top: 50,
+    pq_margin_top: 0,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
+    pq_top_offset_by_index: [0, 280],
+
 
     coll_label_margin_bottom: 50,
 

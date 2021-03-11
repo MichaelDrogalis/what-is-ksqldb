@@ -1,0 +1,282 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>What is ksqlDB?</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+
+    <link rel="stylesheet" href="node_modules/tailwindcss/dist/tailwind.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/github.css">
+
+    <link as="font" href="assets/MarkPro.woff2" rel="preload">
+    <link as="font" href="assets/MarkPro-Bold.woff2" rel="preload">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	    <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+          <div class="container">
+            <img src="assets/img/img-rocket.svg" class="m-auto w-32"/>
+            <p class="text-6xl mt-8">How ksqlDB works</p>
+          </div>
+        </section>
+        <section>
+          <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">What problems ksqlDB solves</p>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">Traditional stream processing architectures are complex, to say the least.</p>
+            <img src="assets/img/traditional-components.svg" class="mt-16 bg-white"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">These architectures resemble a big, clunky ETL pipeline.</p>
+            <img src="assets/img/traditional-overlay.svg" class="mt-16 bg-white"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">ksqlDB consolidates this complex with one abstraction.</p>
+            <img src="assets/img/ksqldb-world.svg"/ class="mt-16 bg-white">
+          </section>
+        </section>
+
+        <!-- <section>
+          <section class="center">
+            <p class="text-6xl">What can I build with it?</p>
+
+            <div class="m-auto mt-20">
+              <div class="inline-block">
+                <img src="assets/img/materialized-view.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Materialized cache</p>
+              </div>
+
+              <div class="inline-block ml-20">
+                <img src="assets/img/streaming-etl.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Streaming ETL pipeline</p>
+              </div>
+
+              <div class="inline-block ml-20">
+                <img src="assets/img/microservices.svg" class="w-20 m-auto">
+                <p class="text-base mt-3">Event-driven microservice</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/materialized-view.svg" class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Materialized cache</p>
+                <p class="mt-5">Build and serve incrementally updated stateful views.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Materialized cache, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">Chain many distributed systems together.</p>
+            <img src="assets/img/mv-hard.png" class="m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Materialized cache, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">Run just two systems. One for compute, and one for storage.</p>
+            <img src="assets/img/mv-easy.png" class="w-3/5 m-auto mt-20">
+          </section>
+          
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/streaming-etl.svg" class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Streaming ETL pipeline</p>
+                <p class="mt-5">Manipulate in-flight data to connect arbitrary sources and sinks.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Streaming ETL pipeline, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">Coordinate many disparate systems.</p>
+            <img src="assets/img/etl-hard.png" class="w-4/5 m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Streaming ETL pipeline, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">A slender architecture for managing the end-to-end flow of your data pipeline.</p>
+            <img src="assets/img/etl-easy.png" class="w-3/5 m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-start-2 col-span-2 m-auto">
+                <img src="assets/img/microservices.svg" class="w-40">
+              </div>
+              <div class="col-start-4 col-span-2 m-auto">
+                <p class="text-3xl">Event-driven microservices</p>
+                <p class="mt-5">Trigger changes based on observed patterns of events in a stream.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Event-driven microservice, without ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-red-600">It's up to you to blend your stream processing, state, and side-effects logic in a maintainable way.</p>
+            <img src="assets/img/microservice-hard.png" class="m-auto mt-20">
+          </section>
+
+          <section class="center">
+            <p class="text-5xl">Event-driven microservice, with ksqlDB</p>
+            <p class="text-3xl w-4/5 m-auto mt-5 text-green-600">Isolate complex stateful operations within ksqlDB’s runtime. Your app stays simple because it is stateless.</p>
+            <img src="assets/img/microservice-easy.png" class="w-3/5 m-auto mt-20">
+          </section>
+        </section> -->
+
+        <section>
+          <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">Stateless functionality</p>
+            <!-- <ul class="list-disc list-inside">
+                <li>Streams</li>
+                <li>Rows</li>
+                <li>Transformations & filters</li>
+                <li>Chaining queries</li>
+                <li>Concurrent consumers</li>
+            </ul> -->
+          </section>
+
+          <section data-name="stream">
+            <p class="text-5xl">Streams</p>
+            <div class="mt-10 specimen" id="stream"></div>
+          </section>
+
+          <section data-name="inserts">
+            <div class="container mx-auto">
+              <p class="text-5xl">Rows</p>
+              <div class="mt-10 specimen" id="inserts"></div>
+            </div>
+          </section>
+
+          <section data-name="transformation">
+            <div class="container mx-auto">
+              <p class="text-5xl">Transforming a stream</p>
+              <div class="mt-10 specimen" id="transformation"></div>
+            </div>
+          </section>
+
+          <section data-name="filtering">
+            <p class="text-5xl">Filtering rows out of a stream</p>
+            <div class="mt-10 specimen" id="filtering"></div>
+          </section>
+
+          <section data-name="compressed">
+            <p class="text-5xl">Combining many operations into one</p>
+            <div class="mt-10 specimen" id="compressed"></div>
+          </section>
+
+          <!-- <section data-name="rekeying">
+            <p class="text-5xl">Rekeying a stream</p>
+            <div class="mt-10" id="rekeying"></div>
+          </section> -->
+
+          <section data-name="multi-consumer">
+            <p class="text-5xl">Processing with multiple consumers</p>
+            <div class="mt-10 specimen" id="multi-consumer"></div>
+          </section>
+        </section>
+
+        <section>
+          <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">Stateful functionality</p>
+          </section>
+
+          <section data-name="materialized-view">
+            <p class="text-5xl">Materializing a view from a stream</p>
+            <div class="mt-10 specimen" id="materialized-view"></div>
+          </section>
+
+          <section data-name="repartitioning">
+            <p class="text-5xl">Automatic repartitioning</p>
+            <div class="mt-10 specimen" id="repartitioning"></div>
+          </section>
+
+          <section data-name="replaying-from-changelog">
+            <p class="text-5xl">Replaying from changelogs</p>
+            <div class="mt-10 specimen" id="replaying-from-changelog"></div>
+          </section>
+
+          <section data-name="replaying-from-compacted">
+            <p class="text-5xl">Replaying from a compacted topic</p>
+            <div class="mt-10 specimen" id="replaying-from-compacted"></div>
+          </section>
+
+          <!-- <section data-name="latest">
+            <p class="text-5xl">Materializing the latest values</p>
+            <div class="mt-10" id="latest"></div>
+          </section>
+
+          <section data-name="chained">
+            <p class="text-5xl">Chaining materialized views</p>
+            <div class="mt-10" id="chained"></div>
+          </section> -->
+        </section>
+
+        <section>
+            <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+                <p class="text-6xl">Scaling and fault tolerance</p>
+            </section>
+            <section class="center">
+                <p class="text-6xl">Adding consumers</p>
+            </section>
+            <section class="center">
+                <p class="text-6xl">Splitting state stores</p>
+            </section>
+            <section class="center">
+                <p class="text-6xl">Configuring for high availability</p>
+                <ul class="list-disc list-inside">
+                    <li>
+                        <code>ksql.streams.num.standby.replicas</code>
+                        <ul class="list-disc list-inside">
+                            <li>set to a value greater than or equal to 1</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>ksql.query.pull.enable.standby.reads</code>
+                        <ul class="list-disc list-inside">
+                            <li>set to true</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>ksql.heartbeat.enable</code>
+                        <ul class="list-disc list-inside">
+                            <li>set to true</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <code>ksql.lag.reporting.enable</code>
+                        <ul class="list-disc list-inside">
+                            <li>set to true</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">Future work</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="build/bundle.js"></script>
+  </body>
+</html>
