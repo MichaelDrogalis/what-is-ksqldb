@@ -45,10 +45,6 @@ code {
   padding: 3px;
 }
 
-.pq-code-container {
-  margin-top: 40px;
-}
-
 .specimen-controls button {
   margin-right: 5px;
 }
@@ -65,12 +61,44 @@ code {
 }
 
 .specimen .specimen-controls {
+  margin-bottom: 3rem;
+  opacity: 0.7;
+}
+
+.specimen .specimen-controls .pause,
+.specimen .specimen-controls .restart,
+.specimen .specimen-controls .manual_left,
+.specimen .specimen-controls .manual_right {
   display: none;
+}
+
+.specimen .specimen-controls .progress-bar {
+  width: 50%;
+  height: 12px;
 }
 
 .specimen .persistent-query-container rect {
   stroke: rgba(32, 230, 221, 1);
   stroke-width: 8px;
+  transition-property: fill;
+  transition-duration: 0.25s;
+}
+
+.specimen .persistent-query-container rect:hover {
+  fill: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.specimen .partition-container rect {
+  transition-property: fill, stroke;
+  transition-duration: 0.25s;
+}
+
+.specimen .partition-container rect:hover {
+  fill: rgba(255, 255, 255, 0.3);
+  stroke: #fff;
+  stroke-width: 1px;
+  cursor: pointer;
 }
 
 .specimen .external-objects {

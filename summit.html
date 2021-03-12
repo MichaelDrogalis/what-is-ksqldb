@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="node_modules/tailwindcss/dist/tailwind.css">
     <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="node_modules/highlight.js/styles/github.css">
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/agate.css">
 
     <link as="font" href="assets/MarkPro.woff2" rel="preload">
     <link as="font" href="assets/MarkPro-Bold.woff2" rel="preload">
@@ -166,6 +166,18 @@
               <div class="mt-10 specimen" id="inserts"></div>
             </div>
           </section>
+<!-- 
+          <section data-name="transformation">
+            <div class="container mx-auto">
+              <p class="text-5xl">Transforming a stream</p>
+              <pre><code>CREATE STREAM clean AS
+    SELECT sensor,
+    reading,
+    UCASE(location) AS location
+    FROM readings
+    EMIT CHANGES;</code></pre>
+            </div>
+          </section> -->
 
           <section data-name="transformation">
             <div class="container mx-auto">
