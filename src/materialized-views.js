@@ -22,7 +22,7 @@ export function materialized_view(container) {
   const styles = {
     ...baseStyles,
     svg_width: 750,
-    svg_height: 375,
+    svg_height: 275,
 
     pq_width: 150,
     pq_height: 150,
@@ -130,7 +130,7 @@ export function repartitioning(container) {
   const styles = {
     ...baseStyles,
     svg_width: 750,
-    svg_height: 300,
+    svg_height: 200,
 
     pq_width: 110,
     pq_height: 75,
@@ -262,7 +262,7 @@ export function replaying_from_changelog(container) {
   const styles = {
     ...baseStyles,
     svg_width: 400,
-    svg_height: 300,
+    svg_height: 200,
 
     pq_width: 125,
     pq_height: 75,
@@ -380,7 +380,7 @@ export function replaying_from_compacted(container) {
   const styles = {
     ...baseStyles,
     svg_width: 400,
-    svg_height: 400,
+    svg_height: 200,
 
     pq_width: 165,
     pq_height: 75,

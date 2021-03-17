@@ -166,34 +166,63 @@
               <div class="mt-10 specimen" id="inserts"></div>
             </div>
           </section>
-<!-- 
-          <section data-name="transformation">
-            <div class="container mx-auto">
-              <p class="text-5xl">Transforming a stream</p>
-              <pre><code>CREATE STREAM clean AS
-    SELECT sensor,
-    reading,
-    UCASE(location) AS location
-    FROM readings
-    EMIT CHANGES;</code></pre>
-            </div>
-          </section> -->
 
           <section data-name="transformation">
             <div class="container mx-auto">
-              <p class="text-5xl">Transforming a stream</p>
-              <div class="mt-10 specimen" id="transformation"></div>
+              <p class="text-5xl">Transforming a stream</p>                
+                <div class="mt-10 specimen" id="transformation"></div>
+                <div class="flex justify-center">
+                    <pre class="text-left">
+                        <code>-- pq1
+CREATE STREAM clean AS
+  SELECT sensor,
+         reading,
+         UCASE(location) AS location
+  FROM readings
+  EMIT CHANGES;</code>
+    </pre>
+                </div>
             </div>
           </section>
 
           <section data-name="filtering">
             <p class="text-5xl">Filtering rows out of a stream</p>
             <div class="mt-10 specimen" id="filtering"></div>
+            <div class="flex flex-row justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE STREAM clean AS
+  SELECT 
+    sensor,
+    reading,
+    UCASE(location) AS location
+  FROM readings
+  EMIT CHANGES;</code>
+</pre>
+                <pre class="text-left">
+                    <code>-- pq2
+CREATE STREAM high_readings AS
+    SELECT sensor, reading, location
+    FROM clean
+    WHERE reading > 41
+    EMIT CHANGES;</code></pre>
+            </div>
           </section>
 
           <section data-name="compressed">
             <p class="text-5xl">Combining many operations into one</p>
             <div class="mt-10 specimen" id="compressed"></div>
+            <div class="flex justify-center">
+                <pre class="text-left"><code>-- pq1
+CREATE STREAM high_pri AS
+    SELECT sensor,
+           reading,
+           UCASE(location) AS location
+    FROM readings
+    WHERE reading > 41
+    EMIT CHANGES;
+                </code></pre>
+            </div>
           </section>
 
           <!-- <section data-name="rekeying">
@@ -203,7 +232,35 @@
 
           <section data-name="multi-consumer">
             <p class="text-5xl">Processing with multiple consumers</p>
-            <div class="mt-10 specimen" id="multi-consumer"></div>
+            <div class="flex flex-row mt-10">
+                <div class="mr-8">
+                <pre class="text-left"><code>-- pq1
+CREATE STREAM high_pri AS
+    SELECT sensor,
+           reading,
+           UCASE(location) AS location
+    FROM readings
+    WHERE reading > 41
+    EMIT CHANGES;
+</code></pre>
+<pre class="text-left mt-4"><code>-- pq2
+CREATE STREAM by_location AS
+    SELECT *
+    FROM high_pri
+    PARTITION BY location
+    EMIT CHANGES;
+</code></pre>
+<pre class="text-left mt-4"><code>-- pq3
+CREATE STREAM s1_by_location AS
+  SELECT sensor,
+         reading,
+         UCASE(location) AS location
+  FROM s2
+  EMIT CHANGES;
+</code></pre>
+</div>
+                <div class="specimen" id="multi-consumer"></div>
+            </div>
           </section>
         </section>
 
@@ -215,21 +272,68 @@
           <section data-name="materialized-view">
             <p class="text-5xl">Materializing a view from a stream</p>
             <div class="mt-10 specimen" id="materialized-view"></div>
+            <div class="flex justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE avg_readings AS
+    SELECT sensor,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY sensor
+    EMIT CHANGES;</code>
+</pre>
+            </div>
           </section>
 
           <section data-name="repartitioning">
             <p class="text-5xl">Automatic repartitioning</p>
             <div class="mt-10 specimen" id="repartitioning"></div>
+            <div class="flex flex-row justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+[[ internal ]]</code>
+</pre>
+                <pre class="text-left">
+                    <code>-- pq2
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code></pre>
+            </div>            
           </section>
 
           <section data-name="replaying-from-changelog">
             <p class="text-5xl">Replaying from changelogs</p>
             <div class="mt-10 specimen" id="replaying-from-changelog"></div>
+            <div class="flex justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code>
+</pre>
+            </div>            
           </section>
 
           <section data-name="replaying-from-compacted">
             <p class="text-5xl">Replaying from a compacted topic</p>
             <div class="mt-10 specimen" id="replaying-from-compacted"></div>
+            <div class="flex justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code>
+</pre>
+            </div>
           </section>
 
           <!-- <section data-name="latest">

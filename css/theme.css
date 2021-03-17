@@ -37,7 +37,9 @@ body {
 }
 
 .code {
-  font-family: monospace;
+  font-size: 12px;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 }
 
 code {
@@ -113,4 +115,10 @@ code {
 
 .reveal aside.controls {
   color: #fff;
+}
+
+.reveal .hljs {
+  background: transparent;
+  line-height: 1.2rem;
+  min-height: auto;
 }

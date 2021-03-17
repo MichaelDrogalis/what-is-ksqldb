@@ -1,5 +1,5 @@
-import { Specimen } from '@michaeldrogalis/specimen/dist/specimen';
-import { baseStyles, flavors } from './common';
+import { Specimen } from "@michaeldrogalis/specimen/dist/specimen";
+import { baseStyles, flavors } from "./common";
 
 // const flavors = [
 //   "#0074A2",
@@ -13,7 +13,7 @@ const input_partitions = [
     { key: "sensor-2", value: { reading: 41, location: "motor" }, t: 25 },
     { key: "sensor-1", value: { reading: 42, location: "wheel" }, t: 34 },
     { key: "sensor-3", value: { reading: 42, location: "muffler" }, t: 42 },
-    { key: "sensor-3", value: { reading: 40, location: "muffler" }, t: 45 }
+    { key: "sensor-3", value: { reading: 40, location: "muffler" }, t: 45 },
   ],
   [
     { key: "sensor-4", value: { reading: 43, location: "motor" }, t: 10 },
@@ -27,8 +27,8 @@ const input_partitions = [
     { key: "sensor-8", value: { reading: 40, location: "wheel" }, t: 22 },
     { key: "sensor-9", value: { reading: 40, location: "motor" }, t: 30 },
     { key: "sensor-9", value: { reading: 44, location: "motor" }, t: 55 },
-    { key: "sensor-7", value: { reading: 41, location: "muffler" }, t: 53 }
-  ]
+    { key: "sensor-7", value: { reading: 41, location: "muffler" }, t: 53 },
+  ],
 ];
 
 export function stream(container) {
@@ -54,7 +54,7 @@ export function stream(container) {
     row_margin_left: 8,
     row_offset_right: 10,
 
-    render_controls: false
+    render_controls: false,
   };
 
   const s = new Specimen(container, styles);
@@ -62,11 +62,7 @@ export function stream(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.render();
@@ -95,7 +91,7 @@ export function inserts(container) {
     row_margin_left: 8,
     row_offset_right: 10,
 
-    render_controls: false
+    render_controls: false,
   };
 
   const s = new Specimen(container, styles);
@@ -103,7 +99,7 @@ export function inserts(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.render();
@@ -132,7 +128,7 @@ export function transformation(container) {
     row_margin_left: 8,
     row_offset_right: 10,
 
-    ms_px: 5
+    ms_px: 5,
   };
 
   const s = new Specimen(container, styles);
@@ -140,7 +136,7 @@ export function transformation(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.add_child(["readings"], {
@@ -153,34 +149,29 @@ export function transformation(container) {
       "           reading,",
       "           UCASE(location) AS location",
       "    FROM readings",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        country: value.location.toUpperCase()
-      }
+        country: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
     style: {
-      fill: function(before_row, after_row) {
-        console.log(flavors[before_row.value.location.hashCode() % flavors.length]);
+      fill: function (before_row, after_row) {
         return flavors[before_row.value.location.hashCode() % flavors.length];
-      }
-    }
+      },
+    },
   });
 
   s.add_child(["pq1"], {
     name: "clean",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.render();
@@ -209,7 +200,7 @@ export function filtering(container) {
     row_margin_left: 8,
     row_offset_right: 8,
 
-    ms_px: 5
+    ms_px: 5,
   };
 
   const s = new Specimen(container, styles);
@@ -217,7 +208,7 @@ export function filtering(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.add_child(["readings"], {
@@ -230,33 +221,29 @@ export function filtering(container) {
       "           reading,",
       "           UCASE(location) AS location",
       "    FROM readings",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        location: value.location.toUpperCase()
-      }
+        location: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
     style: {
-      fill: function(before_row, after_row) {
+      fill: function (before_row, after_row) {
         return flavors[before_row.value.location.hashCode() % flavors.length];
-      }
-    }
+      },
+    },
   });
 
   s.add_child(["pq1"], {
     name: "clean",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.add_child(["clean"], {
@@ -268,19 +255,19 @@ export function filtering(container) {
       "    SELECT sensor, reading, location",
       "    FROM clean",
       "    WHERE reading > 41",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        location: value.location.toUpperCase()
-      }
+        location: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    where: function(context, row) {
+    where: function (context, row) {
       return row.value.reading > 41;
     },
   });
@@ -288,13 +275,9 @@ export function filtering(container) {
   s.add_child(["pq2"], {
     name: "high_readings",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
-  
+
   s.render();
 }
 
@@ -321,7 +304,7 @@ export function compressed(container) {
     row_margin_left: 8,
     row_offset_right: 8,
 
-    ms_px: 5
+    ms_px: 5,
   };
 
   const s = new Specimen(container, styles);
@@ -329,7 +312,7 @@ export function compressed(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.add_child(["readings"], {
@@ -343,38 +326,34 @@ export function compressed(container) {
       "           UCASE(location) AS location",
       "    FROM readings",
       "    WHERE reading > 41",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        location: value.location.toUpperCase()
-      }
+        location: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    where: function(context, row) {
+    where: function (context, row) {
       return row.value.reading > 41;
     },
     style: {
-      fill: function(before_row, after_row) {
+      fill: function (before_row, after_row) {
         return flavors[before_row.value.location.hashCode() % flavors.length];
-      }
-    }
+      },
+    },
   });
 
   s.add_child(["pq1"], {
     name: "high_pri",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
-  
+
   s.render();
 }
 
@@ -401,7 +380,7 @@ export function rekeying(container) {
     row_margin_left: 8,
     row_offset_right: 8,
 
-    ms_px: 5
+    ms_px: 5,
   };
 
   const s = new Specimen(container, styles);
@@ -409,7 +388,7 @@ export function rekeying(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.add_child(["readings"], {
@@ -423,36 +402,32 @@ export function rekeying(container) {
       "           UCASE(location) AS location",
       "    FROM readings",
       "    WHERE reading > 41",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        location: value.location.toUpperCase()
-      }
+        location: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    where: function(context, row) {
+    where: function (context, row) {
       return row.value.reading > 41;
     },
     style: {
-      fill: function(before_row, after_row) {
+      fill: function (before_row, after_row) {
         return flavors[before_row.value.location.hashCode() % flavors.length];
-      }
-    }
+      },
+    },
   });
 
   s.add_child(["pq1"], {
     name: "high_pri",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.add_child(["high_pri"], {
@@ -464,31 +439,27 @@ export function rekeying(container) {
       "    SELECT *",
       "    FROM high_pri",
       "    PARTITION BY location",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { key, value } = row;
 
       const v = {
         reading: value.reading,
-        sensor: key
-      }
+        sensor: key,
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    partition_by: function(context, before_row, after_row) {
+    partition_by: function (context, before_row, after_row) {
       return before_row.value.location;
-    }
+    },
   });
 
   s.add_child(["pq2"], {
     name: "by_location",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.render();
@@ -497,8 +468,8 @@ export function rekeying(container) {
 export function consumers(container) {
   const styles = {
     ...baseStyles,
-    svg_width: 750,
-    svg_height: 675,
+    svg_width: 700,
+    svg_height: 650,
 
     pq_width: 75,
     pq_height: 75,
@@ -506,7 +477,6 @@ export function consumers(container) {
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
     pq_top_offset_by_index: [0, 280],
-
 
     coll_label_margin_bottom: 50,
 
@@ -521,7 +491,7 @@ export function consumers(container) {
     row_margin_left: 8,
     row_offset_right: 8,
 
-    ms_px: 5
+    ms_px: 5,
   };
 
   const s = new Specimen(container, styles);
@@ -529,7 +499,7 @@ export function consumers(container) {
   s.add_root({
     name: "readings",
     kind: "stream",
-    partitions: input_partitions
+    partitions: input_partitions,
   });
 
   s.add_child(["readings"], {
@@ -543,36 +513,32 @@ export function consumers(container) {
       "           UCASE(location) AS location",
       "    FROM readings",
       "    WHERE reading > 41",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { value } = row;
 
       const v = {
         reading: value.reading,
-        location: value.location.toUpperCase()
-      }
+        location: value.location.toUpperCase(),
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    where: function(context, row) {
+    where: function (context, row) {
       return row.value.reading > 41;
     },
     style: {
-      fill: function(before_row, after_row) {
+      fill: function (before_row, after_row) {
         return flavors[before_row.value.location.hashCode() % flavors.length];
-      }
-    }
+      },
+    },
   });
 
   s.add_child(["pq1"], {
     name: "high_pri",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.add_child(["high_pri"], {
@@ -584,31 +550,27 @@ export function consumers(container) {
       "    SELECT *",
       "    FROM high_pri",
       "    PARTITION BY location",
-      "    EMIT CHANGES;"
+      "    EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { key, value } = row;
 
       const v = {
         reading: value.reading,
-        sensor: key
-      }
+        sensor: key,
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    partition_by: function(context, before_row, after_row) {
+    partition_by: function (context, before_row, after_row) {
       return before_row.value.location;
-    }
+    },
   });
 
   s.add_child(["pq2"], {
     name: "by_location",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
 
   s.add_child(["high_pri"], {
@@ -621,32 +583,28 @@ export function consumers(container) {
       "         reading,",
       "         UCASE(location) AS location",
       "  FROM s2",
-      "  EMIT CHANGES;"
+      "  EMIT CHANGES;",
     ],
-    select: function(context, row) {
+    select: function (context, row) {
       const { key, value } = row;
 
       const v = {
         reading: value.reading,
-        sensor: key
-      }
+        sensor: key,
+      };
 
-      return { ...row, ... { value: v } };
+      return { ...row, ...{ value: v } };
     },
-    partition_by: function(context, before_row, after_row) {
-      return (before_row.value.location + " ");
-    }
+    partition_by: function (context, before_row, after_row) {
+      return before_row.value.location + " ";
+    },
   });
 
   s.add_child(["pq3"], {
     name: "by_zone",
     kind: "stream",
-    partitions: [
-      [],
-      [],
-      []
-    ]
+    partitions: [[], [], []],
   });
-  
+
   s.render();
 }
