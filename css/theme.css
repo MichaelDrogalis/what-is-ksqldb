@@ -68,9 +68,7 @@ code {
 }
 
 .specimen .specimen-controls .pause,
-.specimen .specimen-controls .restart,
-.specimen .specimen-controls .manual_left,
-.specimen .specimen-controls .manual_right {
+.specimen .specimen-controls .restart {
   display: none;
 }
 
@@ -79,14 +77,14 @@ code {
   height: 12px;
 }
 
-.specimen .persistent-query-container rect {
+.specimen .persistent-query {
   stroke: rgba(32, 230, 221, 1);
   stroke-width: 8px;
   transition-property: fill;
   transition-duration: 0.25s;
 }
 
-.specimen .persistent-query-container rect:hover {
+.specimen .persistent-query:hover {
   fill: rgba(255, 255, 255, 0.4);
   cursor: pointer;
 }
@@ -118,7 +116,15 @@ code {
 }
 
 .reveal .hljs {
-  background: transparent;
+  background: #000;
   line-height: 1.2rem;
   min-height: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+/* use this to constrain svgs that are too large for the stage, in addition to svg_viewbox_offset_{x,y} */
+#multi-consumer svg.animation {
+  max-width: 100%;
+  max-height: 100%;
 }

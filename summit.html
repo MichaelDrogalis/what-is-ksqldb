@@ -259,7 +259,7 @@ CREATE STREAM s1_by_location AS
   EMIT CHANGES;
 </code></pre>
 </div>
-                <div class="specimen" id="multi-consumer"></div>
+                <div class="specimen relative" id="multi-consumer"></div>
             </div>
           </section>
         </section>
@@ -289,7 +289,7 @@ CREATE TABLE avg_readings AS
             <p class="text-5xl">Automatic repartitioning</p>
             <div class="mt-10 specimen" id="repartitioning"></div>
             <div class="flex flex-row justify-center">
-                <pre class="text-left">
+                <pre class="text-left mr-6">
                     <code>-- pq1
 [[ internal ]]</code>
 </pre>
@@ -322,8 +322,7 @@ CREATE TABLE part_avg AS
 
           <section data-name="replaying-from-compacted">
             <p class="text-5xl">Replaying from a compacted topic</p>
-            <div class="mt-10 specimen" id="replaying-from-compacted"></div>
-            <div class="flex justify-center">
+            <div class="flex flex-row mt-10">
                 <pre class="text-left">
                     <code>-- pq1
 CREATE TABLE part_avg AS
@@ -333,6 +332,7 @@ CREATE TABLE part_avg AS
     GROUP BY area
     EMIT CHANGES;</code>
 </pre>
+            <div class="specimen relative" id="replaying-from-compacted"></div>
             </div>
           </section>
 

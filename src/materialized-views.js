@@ -22,11 +22,11 @@ export function materialized_view(container) {
   const styles = {
     ...baseStyles,
     svg_width: 750,
-    svg_height: 275,
+    svg_height: 300,
 
     pq_width: 150,
-    pq_height: 150,
-    pq_margin_top: 0,
+    pq_height: 100,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -130,11 +130,11 @@ export function repartitioning(container) {
   const styles = {
     ...baseStyles,
     svg_width: 750,
-    svg_height: 200,
+    svg_height: 260,
 
     pq_width: 110,
     pq_height: 75,
-    pq_margin_top: 0,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -262,11 +262,11 @@ export function replaying_from_changelog(container) {
   const styles = {
     ...baseStyles,
     svg_width: 400,
-    svg_height: 200,
+    svg_height: 270,
 
     pq_width: 125,
     pq_height: 75,
-    pq_margin_top: 0,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -380,11 +380,11 @@ export function replaying_from_compacted(container) {
   const styles = {
     ...baseStyles,
     svg_width: 400,
-    svg_height: 200,
+    svg_height: 350,
 
     pq_width: 165,
     pq_height: 75,
-    pq_margin_top: 0,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 

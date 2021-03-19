@@ -16,7 +16,7 @@ export const baseStyles = {
   pq_metadata_margin_top: 15,
 
   source_partitions_margin_left: 10,
-  source_partitions_fill: "orange",
+  source_partitions_fill: "transparent",
 
   st_margin_top: 20,
   st_margin_left: 5,
@@ -50,13 +50,14 @@ export const baseStyles = {
   consumer_m_margin_bottom: 15,
   consumer_m_margin_right: 3,
 
-  mv_container_fill: "green",
+  mv_container_fill: "transparent",
   mv_margin_top: 10,
   mv_row_height: 15,
 
   render_controls: true,
-  render_stream_time: false,
+  render_stream_time: true,
   render_aggregate: true,
+  render_source_partitions: true,
 
   font_size: "1em",
   seek_ms: 25,

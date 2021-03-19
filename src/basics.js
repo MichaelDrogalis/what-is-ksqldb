@@ -109,11 +109,11 @@ export function transformation(container) {
   const styles = {
     ...baseStyles,
     svg_width: 750,
-    svg_height: 325,
+    svg_height: 300,
 
     pq_width: 150,
     pq_height: 150,
-    pq_margin_top: 0,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
 
@@ -470,10 +470,11 @@ export function consumers(container) {
     ...baseStyles,
     svg_width: 700,
     svg_height: 650,
+    svg_viewbox_offset_y: 100,
 
     pq_width: 75,
     pq_height: 75,
-    pq_margin_top: 0,
+    pq_margin_top: 20,
     pq_label_margin_left: 0,
     pq_label_margin_bottom: 10,
     pq_top_offset_by_index: [0, 280],
