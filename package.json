@@ -12,8 +12,8 @@
     "tailwindcss": "1.8.11"
   },
   "devDependencies": {
-    "rollup": "^2.22.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "@rollup/plugin-commonjs": "^15.1.0"
+    "rollup": "^2.22.1"
   }
 }
