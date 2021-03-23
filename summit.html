@@ -243,56 +243,36 @@ CREATE TABLE part_avg AS
             <div class="specimen relative" id="replaying-from-compacted"></div>
             </div>
           </section>
-
-          <!-- <section data-name="latest">
-            <p class="text-5xl">Materializing the latest values</p>
-            <div class="mt-10" id="latest"></div>
-          </section>
-
-          <section data-name="chained">
-            <p class="text-5xl">Chaining materialized views</p>
-            <div class="mt-10" id="chained"></div>
-          </section> -->
         </section>
 
         <section>
             <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
                 <p class="text-6xl">Scaling and fault tolerance</p>
             </section>
-            <section class="center">
-                <p class="text-6xl">Adding consumers</p>
+
+            <section data-name="scaling-1x">
+              <p class="text-5xl">Scaling: 1x</p>
+              <div class="mt-10 specimen" id="scaling-1x"></div>
             </section>
-            <section class="center">
-                <p class="text-6xl">Splitting state stores</p>
+
+            <section data-name="scaling-2x">
+              <p class="text-5xl">Scaling: 2x</p>
+              <div class="mt-10 specimen" id="scaling-2x"></div>
             </section>
-            <section class="center">
-                <p class="text-6xl">Configuring for high availability</p>
-                <ul class="list-disc list-inside">
-                    <li>
-                        <code>ksql.streams.num.standby.replicas</code>
-                        <ul class="list-disc list-inside">
-                            <li>set to a value greater than or equal to 1</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <code>ksql.query.pull.enable.standby.reads</code>
-                        <ul class="list-disc list-inside">
-                            <li>set to true</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <code>ksql.heartbeat.enable</code>
-                        <ul class="list-disc list-inside">
-                            <li>set to true</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <code>ksql.lag.reporting.enable</code>
-                        <ul class="list-disc list-inside">
-                            <li>set to true</li>
-                        </ul>
-                    </li>
-                </ul>
+
+            <section data-name="scaling-8x">
+              <p class="text-5xl">Scaling: 8x</p>
+              <div class="mt-10 specimen" id="scaling-8x"></div>
+            </section>
+
+            <section data-name="scaling-with-state">
+              <p class="text-5xl">Scaling with state</p>
+              <div class="mt-10 specimen" id="scaling-with-state"></div>
+            </section>
+
+            <section data-name="high-availability">
+              <p class="text-5xl">High availability</p>
+              <div class="mt-10 specimen" id="high-availability"></div>
             </section>
         </section>
         <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
