@@ -29,32 +29,33 @@
         </section>
         <section>
           <section class="center">
-            <p class="text-5xl">Who am I?</p>
+            <p class="text-5xl mb-12">Who am I?</p>
             <img src="assets/img/md.jpeg" class="object-scale-down h-48 w-full"/>
-            <p class="text-3xl">Michael Drogalis</p>
-            <p class="text-2xl">Principal Product Manager, ksqlDB & Stream Processing @ Confluent</p>
+            <p class="text-3xl mt-4">Michael Drogalis</p>
+            <p class="text-2xl mt-4">Principal Product Manager</p>
+            <p class="text-2xl mt-4">ksqlDB & Stream Processing @ Confluent</p>
           </section>
 
           <section class="center">
-            <div class="grid grid-cols-5">
-              <div class="col-start-2 col-span-1"><img src="assets/img/ak.svg"></div>
-              <div class="col-span-2"><p class="text-5xl">How do I <em>use</em> my data in real-time?</p></div>
+            <div class="grid grid-cols-6">
+              <div class="col-start-2 col-span-1 mr-8"><img src="assets/img/ak.svg"></div>
+              <div class="col-span-3 mt-12 text-left"><p class="text-5xl">How do I <em class="italic">use</em> my data in real-time?</p></div>
             </div>
           </section>
 
           <section class="center">
             <p class="text-3xl w-3/5 m-auto">It's not exactly simple.</p>
-            <img src="assets/img/traditional-components.svg" class="mt-16 bg-white"/>
+            <img src="assets/img/traditional-components.svg" class="mt-16"/>
           </section>
 
           <section class="center">
             <p class="text-3xl w-3/5 m-auto">What if it looked more like Postgres?</p>
-            <img src="assets/img/ksqldb-world.svg"/ class="mt-16 bg-white">
+            <img src="assets/img/ksqldb-world.svg" class="mt-16"/>
           </section>
 
           <section class="center">
             <p class="text-3xl w-3/5 m-auto">How you use it</p>
-            
+            <img src="assets/img/ksqldb-arch-clients.svg" class="mt-16"/>
           </section>
         </section>
 
@@ -65,13 +66,41 @@
 
           <section data-name="stream">
             <p class="text-5xl">Streams</p>
-            <div class="mt-10 specimen" id="stream"></div>
+            <div class="flex flex-row mt-10">
+              <pre class="text-left mt-10 mr-8">
+<code>CREATE STREAM readings (sensor VARCHAR KEY,
+                        reading DOUBLE,
+                        location VARCHAR)
+  WITH (kafka_topic='readings',
+        value_format='json',
+        partitions=1);</code>
+              </pre>
+              <div class="mt-10 specimen" id="stream"></div>
+            </div>
           </section>
 
           <section data-name="inserts">
             <div class="container mx-auto">
               <p class="text-5xl">Rows</p>
-              <div class="mt-10 specimen" id="inserts"></div>
+              <div class="flex flex-row mt-10">
+                <pre class="text-left mt-6 mr-8">
+<code>INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-1', 45, 'wheel');
+
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-2', 41, 'motor');
+  
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-1', 42, 'wheel');
+  
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-3', 42, 'muffler');
+
+...
+</code>
+                </pre>
+                <div class="mt-10 specimen" id="inserts"></div>
+              </div>
             </div>
           </section>
 
@@ -97,7 +126,7 @@ CREATE STREAM clean AS
             <p class="text-5xl">Filtering rows out of a stream</p>
             <div class="mt-10 specimen" id="filtering"></div>
             <div class="flex flex-row justify-center">
-                <pre class="text-left">
+                <pre class="text-left mr-6">
                     <code>-- pq1
 CREATE STREAM clean AS
   SELECT 
@@ -276,7 +305,11 @@ CREATE TABLE part_avg AS
             </section>
         </section>
         <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
-            <p class="text-6xl">Future work</p>
+          <img src="assets/img/img-rocket.svg" class="m-auto w-16"/>
+            <p class="text-2xl mb-8">Thanks for watching!</p>
+            <p class="text-2xl mb-2">Learn more and start using ksqlDB</p>
+            <p>at</p>
+            <p class="text-6xl mt-2">ksqldb.io</p>
         </section>
       </div>
     </div>

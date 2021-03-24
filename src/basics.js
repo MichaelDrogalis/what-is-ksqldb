@@ -34,7 +34,7 @@ const input_partitions = [
 export function stream(container) {
   const styles = {
     ...baseStyles,
-    svg_width: 750,
+    svg_width: 400,
     svg_height: 275,
 
     pq_width: 150,
@@ -71,7 +71,7 @@ export function stream(container) {
 export function inserts(container) {
   const styles = {
     ...baseStyles,
-    svg_width: 750,
+    svg_width: 400,
     svg_height: 275,
 
     pq_width: 150,
@@ -180,10 +180,10 @@ export function transformation(container) {
 export function filtering(container) {
   const styles = {
     ...baseStyles,
-    svg_width: 750,
+    svg_width: 800,
     svg_height: 230,
 
-    pq_width: 75,
+    pq_width: 105,
     pq_height: 75,
     pq_margin_top: 0,
     pq_label_margin_left: 0,
@@ -287,7 +287,7 @@ export function compressed(container) {
     svg_width: 750,
     svg_height: 230,
 
-    pq_width: 100,
+    pq_width: 110,
     pq_height: 100,
     pq_margin_top: 0,
     pq_label_margin_left: 0,

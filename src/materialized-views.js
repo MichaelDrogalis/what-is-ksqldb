@@ -24,7 +24,7 @@ export function materialized_view(container) {
     svg_width: 750,
     svg_height: 300,
 
-    pq_width: 150,
+    pq_width: 180,
     pq_height: 100,
     pq_margin_top: 20,
     pq_label_margin_left: 0,

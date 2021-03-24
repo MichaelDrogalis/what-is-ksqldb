@@ -4,7 +4,7 @@ export const baseStyles = {
 
   dynamic_target: "dynamic-elements",
 
-  pq_width: 75,
+  pq_width: 150,
   pq_height: 75,
   pq_margin_top: 50,
   //pq_container_fill: "rgba(32, 230, 221, 1)",
@@ -15,7 +15,7 @@ export const baseStyles = {
   pq_metadata_offset_top: 10,
   pq_metadata_margin_top: 15,
 
-  source_partitions_margin_left: 10,
+  source_partitions_margin_left: 5,
   source_partitions_fill: "transparent",
 
   st_margin_top: 20,
@@ -55,7 +55,7 @@ export const baseStyles = {
   mv_row_height: 15,
 
   render_controls: true,
-  render_stream_time: true,
+  render_stream_time: false,
   render_aggregate: true,
   render_source_partitions: true,
 
