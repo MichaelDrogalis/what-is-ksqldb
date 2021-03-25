@@ -1,4 +1,5 @@
 export const baseStyles = {
+  autoplay: false,
   svg_width: 1200,
   svg_height: 500,
 
