@@ -99,7 +99,7 @@ INSERT INTO readings (sensor, reading, location)
 ...
 </code>
                 </pre>
-                <div class="mt-10 specimen" id="inserts"></div>
+                <div class="mt-10 specimen relative" id="inserts"></div>
               </div>
             </div>
           </section>
@@ -243,8 +243,7 @@ CREATE TABLE part_avg AS
 
           <section data-name="replaying-from-changelog">
             <p class="text-5xl">Replaying from changelogs</p>
-            <div class="mt-10 specimen" id="replaying-from-changelog"></div>
-            <div class="flex justify-center">
+            <div class="flex flex-row mt-10 justify-center">
                 <pre class="text-left">
                     <code>-- pq1
 CREATE TABLE part_avg AS
@@ -254,12 +253,13 @@ CREATE TABLE part_avg AS
     GROUP BY area
     EMIT CHANGES;</code>
 </pre>
+              <div class="specimen relative" id="replaying-from-changelog"></div>
             </div>            
           </section>
 
           <section data-name="replaying-from-compacted">
             <p class="text-5xl">Replaying from a compacted topic</p>
-            <div class="flex flex-row mt-10">
+            <div class="flex flex-row mt-10 justify-center">
                 <pre class="text-left">
                     <code>-- pq1
 CREATE TABLE part_avg AS
