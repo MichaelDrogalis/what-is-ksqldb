@@ -66,6 +66,7 @@ export function stream(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function inserts(container) {
@@ -103,6 +104,7 @@ export function inserts(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function transformation(container) {
@@ -175,6 +177,7 @@ export function transformation(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function filtering(container) {
@@ -279,6 +282,7 @@ export function filtering(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function compressed(container) {
@@ -355,6 +359,7 @@ export function compressed(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function rekeying(container) {
@@ -463,6 +468,7 @@ export function rekeying(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function consumers(container) {
@@ -608,4 +614,5 @@ export function consumers(container) {
   });
 
   s.render();
+  return s;
 }

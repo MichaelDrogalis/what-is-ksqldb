@@ -124,6 +124,7 @@ export function materialized_view(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function repartitioning(container) {
@@ -256,6 +257,7 @@ export function repartitioning(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function replaying_from_changelog(container) {
@@ -374,6 +376,7 @@ export function replaying_from_changelog(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function replaying_from_compacted(container) {
@@ -502,6 +505,7 @@ export function replaying_from_compacted(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function latest(container) {
@@ -610,6 +614,7 @@ export function latest(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function chained(container) {
@@ -803,4 +808,5 @@ export function chained(container) {
   });
 
   s.render();
+  return s;
 }

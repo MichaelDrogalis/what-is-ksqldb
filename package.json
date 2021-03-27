@@ -6,7 +6,7 @@
     "build": "NODE_ENV=production npx rollup -c"
   },
   "dependencies": {
-    "@michaeldrogalis/specimen": "MichaelDrogalis/specimen#035181e",
+    "@michaeldrogalis/specimen": "MichaelDrogalis/specimen#00ab5a8",
     "highlight.js": "^10.6.0",
     "reveal.js": "4.0.2",
     "tailwindcss": "1.8.11"

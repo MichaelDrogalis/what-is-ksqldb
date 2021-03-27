@@ -115,8 +115,11 @@ let deck = new Reveal({
 deck.on('slidechanged', event => {
   specimens.forEach(specimen => {
     if ((event.currentSlide.dataset.name == specimen.name) && !specimen.rendered) {
-      specimen.fn(specimen.selector);
+      const obj = specimen.fn(specimen.selector);
       specimen.rendered = true;
+      specimen.obj = obj;
+    } else if ((event.currentSlide.dataset.name != specimen.name) && specimen.rendered) {
+      specimen.obj.pause();
     }
   });
 });

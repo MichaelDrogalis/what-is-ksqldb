@@ -322,6 +322,7 @@ export function one_node(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function two_nodes(container) {
@@ -349,6 +350,7 @@ export function two_nodes(container) {
   });
 
   s.render();
+  return s;
 }
 
 export function eight_nodes(container) {
@@ -397,6 +399,7 @@ export function eight_nodes(container) {
   );
 
   s.render();
+  return s;
 }
 
 export function add_mv_pq(s, name, partitions) {
@@ -501,6 +504,7 @@ export function materialized_view(container) {
   });
 
   s.render();
+  return s;
 }
 
 const replay_pq_text = [
@@ -844,6 +848,7 @@ export function replay_changelog(container) {
   add_replay_pq(s, "pq1(d)", [6, 7]);
 
   s.render();
+  return s;
 }
 
 export function high_availability(container) {
@@ -881,4 +886,5 @@ export function high_availability(container) {
   add_replay_pq(s, "r-2 pq1(a)", [2, 3], query_text);
 
   s.render();
+  return s;
 }
