@@ -6,13 +6,14 @@
     "build": "NODE_ENV=production npx rollup -c"
   },
   "dependencies": {
-    "@michaeldrogalis/specimen": "0.0.7",
+    "@michaeldrogalis/specimen": "MichaelDrogalis/specimen#00ab5a8",
+    "highlight.js": "^10.6.0",
     "reveal.js": "4.0.2",
     "tailwindcss": "1.8.11"
   },
   "devDependencies": {
-    "rollup": "^2.22.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "@rollup/plugin-commonjs": "^15.1.0"
+    "rollup": "^2.22.1"
   }
 }

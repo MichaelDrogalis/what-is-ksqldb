@@ -4,6 +4,7 @@ import sql from 'highlight.js/lib/languages/sql';
 
 import * as b from "./basics";
 import * as mv from "./materialized-views";
+import * as s from "./scaling";
 
 hljs.registerLanguage('sql', sql);
 hljs.initHighlightingOnLoad();
@@ -73,7 +74,32 @@ const specimens = [
     name: 'chained',
     fn: mv.chained,
     selector: '#chained'
-  }
+  },
+  {
+    name: 'scaling-1x',
+    fn: s.one_node,
+    selector: '#scaling-1x'
+  },
+  {
+    name: 'scaling-2x',
+    fn: s.two_nodes,
+    selector: '#scaling-2x'
+  },
+  {
+    name: 'scaling-8x',
+    fn: s.eight_nodes,
+    selector: '#scaling-8x'
+  },
+  {
+    name: 'scaling-with-state',
+    fn: s.materialized_view,
+    selector: '#scaling-with-state'
+  },
+  {
+    name: 'high-availability',
+    fn: s.high_availability,
+    selector: '#high-availability'
+  },
 ];
 
 specimens.forEach(specimen => {
@@ -89,8 +115,11 @@ let deck = new Reveal({
 deck.on('slidechanged', event => {
   specimens.forEach(specimen => {
     if ((event.currentSlide.dataset.name == specimen.name) && !specimen.rendered) {
-      specimen.fn(specimen.selector);
+      const obj = specimen.fn(specimen.selector);
       specimen.rendered = true;
+      specimen.obj = obj;
+    } else if ((event.currentSlide.dataset.name != specimen.name) && specimen.rendered) {
+      specimen.obj.pause();
     }
   });
 });

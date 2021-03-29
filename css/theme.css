@@ -1,54 +1,156 @@
 body {
-    font-family: MarkOT,Arial,sans-serif;
+  font-family: MarkOT, Arial, sans-serif;
 }
 
 .animation {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 .pq {
-    stroke: #b5b5b5;
-    stroke-width: 1;
-    fill: none;
+  stroke: #b5b5b5;
+  stroke-width: 1;
+  fill: none;
 }
 
 .pq-connector {
-    stroke: #b5b5b5;
-    stroke-dasharray: 4;
+  stroke: #b5b5b5;
+  stroke-dasharray: 4;
 }
 
 .stream-connector {
-    stroke: #b5b5b5;
+  stroke: #b5b5b5;
 }
 
 .row-transformed {
-    fill: #a96bff;
+  fill: #a96bff;
 }
 
 .row.discard {
-    fill: #ff9c6b;
+  fill: #ff9c6b;
 }
 
 .partition {
-    stroke: #000000;
-    stroke-width: 1;
-    fill: none;
+  stroke: #000000;
+  stroke-width: 1;
+  fill: none;
 }
 
 .code {
-    font-family: monospace;
+  font-size: 12px;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 }
 
 code {
-    background-color: #f0f0f0;
-    padding: 3px;
-}
-
-.pq-code-container {
-    margin-top: 40px;
+  background-color: #f0f0f0;
+  padding: 3px;
 }
 
 .specimen-controls button {
-    margin-right: 5px;
+  margin-right: 5px;
+}
+
+.specimen .stream-label text,
+.specimen .partition-container text,
+.specimen .persistent-query-container text {
+  fill: #fff;
+}
+
+.specimen .pq-code-container,
+.specimen .pq-connector {
+  display: none;
+}
+
+.specimen .specimen-controls {
+  margin-bottom: 3rem;
+  opacity: 0.7;
+}
+
+.specimen .specimen-controls .pause,
+.specimen .specimen-controls .restart {
+  display: none;
+}
+
+.specimen .specimen-controls .progress-bar {
+  width: 50%;
+  height: 12px;
+}
+
+.specimen .persistent-query {
+  stroke: rgba(32, 230, 221, 1);
+  stroke-width: 8px;
+  transition-property: fill;
+  transition-duration: 0.25s;
+}
+
+.specimen .persistent-query:hover {
+  fill: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.specimen .source-partition rect:hover {
+  fill: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.specimen .materialized-view rect:hover {
+  fill: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.specimen .source-partition text,
+.specimen .materialized-view text {
+  pointer-events: none;
+}
+
+.specimen .partition-container rect,
+.specimen .source-partition rect,
+.specimen .materialized-view rect {
+  transition-property: fill, stroke;
+  transition-duration: 0.25s;
+}
+
+.specimen .materialized-view rect {
+  rx: 0;
+}
+
+.specimen .partition-container rect:hover {
+  fill: rgba(255, 255, 255, 0.3);
+  stroke: #fff;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.specimen .external-objects {
+  color: #000;
+  text-align: left;
+}
+
+.reveal-viewport {
+  background-color: rgb(29, 29, 29);
+  color: #fff;
+}
+
+.reveal aside.controls {
+  color: #fff;
+}
+
+.reveal .hljs {
+  background: #000;
+  line-height: 1.2rem;
+  min-height: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+/* use this to constrain svgs that are too large for the stage, in addition to svg_viewbox_offset_{x,y} */
+#multi-consumer svg.animation {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#scaling-8x svg.animation,
+#scaling-with-state svg.animation {
+  height: 500px !important;
 }

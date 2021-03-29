@@ -1,0 +1,319 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>What is ksqlDB?</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+
+    <link rel="stylesheet" href="node_modules/tailwindcss/dist/tailwind.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/agate.css">
+
+    <link as="font" href="assets/MarkPro.woff2" rel="preload">
+    <link as="font" href="assets/MarkPro-Bold.woff2" rel="preload">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	    <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+          <div class="container">
+            <img src="assets/img/img-rocket.svg" class="m-auto w-32"/>
+            <p class="text-6xl mt-8">How ksqlDB works</p>
+          </div>
+        </section>
+        <section>
+          <section class="center">
+            <p class="text-5xl mb-12">Who am I?</p>
+            <img src="assets/img/md.jpeg" class="object-scale-down h-48 w-full"/>
+            <p class="text-3xl mt-4">Michael Drogalis</p>
+            <p class="text-2xl mt-4">Principal Product Manager</p>
+            <p class="text-2xl mt-4">ksqlDB & Stream Processing @ Confluent</p>
+          </section>
+
+          <section class="center">
+            <div class="grid grid-cols-6">
+              <div class="col-start-2 col-span-1 mr-8"><img src="assets/img/ak.svg"></div>
+              <div class="col-span-3 mt-12 text-left"><p class="text-5xl">How do I <em class="italic">use</em> my data in real-time?</p></div>
+            </div>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">It's not exactly simple.</p>
+            <img src="assets/img/traditional-components.svg" class="mt-16"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">What if it looked more like Postgres?</p>
+            <img src="assets/img/ksqldb-world.svg" class="mt-16"/>
+          </section>
+
+          <section class="center">
+            <p class="text-3xl w-3/5 m-auto">How you use it</p>
+            <img src="assets/img/ksqldb-arch-clients.svg" class="mt-16"/>
+          </section>
+        </section>
+
+        <section>
+          <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">The basics</p>
+          </section>
+
+          <section data-name="stream">
+            <p class="text-5xl">Streams</p>
+            <div class="flex flex-row mt-10">
+              <pre class="text-left mt-10 mr-8">
+<code>CREATE STREAM readings (sensor VARCHAR KEY,
+                        reading DOUBLE,
+                        location VARCHAR)
+  WITH (kafka_topic='readings',
+        value_format='json',
+        partitions=3);</code>
+              </pre>
+              <div class="mt-10 specimen" id="stream"></div>
+            </div>
+          </section>
+
+          <section data-name="inserts">
+            <div class="container mx-auto">
+              <p class="text-5xl">Rows</p>
+              <div class="flex flex-row mt-10">
+                <pre class="text-left mt-6 mr-8">
+<code>INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-1', 45, 'wheel');
+
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-2', 41, 'motor');
+  
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-1', 42, 'wheel');
+  
+INSERT INTO readings (sensor, reading, location)
+    VALUES ('sensor-3', 42, 'muffler');
+
+...
+</code>
+                </pre>
+                <div class="mt-10 specimen relative" id="inserts"></div>
+              </div>
+            </div>
+          </section>
+
+          <section data-name="transformation">
+            <div class="container mx-auto">
+              <p class="text-5xl">Transforming a stream</p>                
+                <div class="mt-10 specimen" id="transformation"></div>
+                <div class="flex justify-center">
+                    <pre class="text-left">
+                        <code>-- pq1
+CREATE STREAM clean AS
+  SELECT sensor,
+         reading,
+         UCASE(location) AS location
+  FROM readings
+  EMIT CHANGES;</code>
+    </pre>
+                </div>
+            </div>
+          </section>
+
+          <section data-name="filtering">
+            <p class="text-5xl">Filtering rows out of a stream</p>
+            <div class="mt-10 specimen" id="filtering"></div>
+            <div class="flex flex-row justify-center">
+                <pre class="text-left mr-6">
+                    <code>-- pq1
+CREATE STREAM clean AS
+  SELECT 
+    sensor,
+    reading,
+    UCASE(location) AS location
+  FROM readings
+  EMIT CHANGES;</code>
+</pre>
+                <pre class="text-left">
+                    <code>-- pq2
+CREATE STREAM high_readings AS
+    SELECT sensor, reading, location
+    FROM clean
+    WHERE reading > 41
+    EMIT CHANGES;</code></pre>
+            </div>
+          </section>
+
+          <section data-name="compressed">
+            <p class="text-5xl">Combining many operations into one</p>
+            <div class="mt-10 specimen" id="compressed"></div>
+            <div class="flex justify-center">
+                <pre class="text-left"><code>-- pq1
+CREATE STREAM high_pri AS
+    SELECT sensor,
+           reading,
+           UCASE(location) AS location
+    FROM readings
+    WHERE reading > 41
+    EMIT CHANGES;
+                </code></pre>
+            </div>
+          </section>
+
+          <!-- <section data-name="rekeying">
+            <p class="text-5xl">Rekeying a stream</p>
+            <div class="mt-10" id="rekeying"></div>
+          </section> -->
+
+          <section data-name="multi-consumer">
+            <p class="text-5xl">Processing with multiple consumers</p>
+            <div class="flex flex-row mt-10">
+                <div class="mr-8">
+                <pre class="text-left"><code>-- pq1
+CREATE STREAM high_pri AS
+    SELECT sensor,
+           reading,
+           UCASE(location) AS location
+    FROM readings
+    WHERE reading > 41
+    EMIT CHANGES;
+</code></pre>
+<pre class="text-left mt-4"><code>-- pq2
+CREATE STREAM by_location AS
+    SELECT *
+    FROM high_pri
+    PARTITION BY location
+    EMIT CHANGES;
+</code></pre>
+<pre class="text-left mt-4"><code>-- pq3
+CREATE STREAM s1_by_location AS
+  SELECT sensor,
+         reading,
+         UCASE(location) AS location
+  FROM s2
+  EMIT CHANGES;
+</code></pre>
+</div>
+                <div class="specimen relative" id="multi-consumer"></div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+            <p class="text-6xl">Stateful functionality</p>
+          </section>
+
+          <section data-name="materialized-view">
+            <p class="text-5xl">Materializing a view from a stream</p>
+            <div class="mt-10 specimen" id="materialized-view"></div>
+            <div class="flex justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE avg_readings AS
+    SELECT sensor,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY sensor
+    EMIT CHANGES;</code>
+</pre>
+            </div>
+          </section>
+
+          <section data-name="repartitioning">
+            <p class="text-5xl">Automatic repartitioning</p>
+            <div class="mt-10 specimen" id="repartitioning"></div>
+            <div class="flex flex-row justify-center">
+                <pre class="text-left mr-6">
+                    <code>-- pq1
+[[ internal ]]</code>
+</pre>
+                <pre class="text-left">
+                    <code>-- pq2
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code></pre>
+            </div>            
+          </section>
+
+          <section data-name="replaying-from-changelog">
+            <p class="text-5xl">Replaying from changelogs</p>
+            <div class="flex flex-row mt-10 justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code>
+</pre>
+              <div class="specimen relative" id="replaying-from-changelog"></div>
+            </div>            
+          </section>
+
+          <section data-name="replaying-from-compacted">
+            <p class="text-5xl">Replaying from a compacted topic</p>
+            <div class="flex flex-row mt-10 justify-center">
+                <pre class="text-left">
+                    <code>-- pq1
+CREATE TABLE part_avg AS
+    SELECT area,
+           AVG(reading) AS avg
+    FROM readings
+    GROUP BY area
+    EMIT CHANGES;</code>
+</pre>
+            <div class="specimen relative" id="replaying-from-compacted"></div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+            <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+                <p class="text-6xl">Scaling and fault tolerance</p>
+            </section>
+
+            <section data-name="scaling-1x">
+              <p class="text-5xl">Scaling: 1x</p>
+              <div class="mt-10 specimen" id="scaling-1x"></div>
+            </section>
+
+            <section data-name="scaling-2x">
+              <p class="text-5xl">Scaling: 2x</p>
+              <div class="mt-10 specimen" id="scaling-2x"></div>
+            </section>
+
+            <section data-name="scaling-8x">
+              <p class="text-5xl">Scaling: 8x</p>
+              <div class="mt-10 specimen" id="scaling-8x"></div>
+            </section>
+
+            <section data-name="scaling-with-state">
+              <p class="text-5xl">Scaling with state</p>
+              <div class="mt-10 specimen" id="scaling-with-state"></div>
+            </section>
+
+            <section data-name="high-availability">
+              <p class="text-5xl">High availability</p>
+              <div class="mt-10 specimen" id="high-availability"></div>
+            </section>
+        </section>
+        <section class="center top-level" data-background-image="assets/img/kse_bg.jpg">
+          <img src="assets/img/img-rocket.svg" class="m-auto w-16"/>
+            <p class="text-2xl mb-8">Thanks for watching!</p>
+            <p class="text-2xl mb-2">Learn more and start using ksqlDB</p>
+            <p>at</p>
+            <p class="text-6xl mt-2">ksqldb.io</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="build/bundle.js"></script>
+  </body>
+</html>
